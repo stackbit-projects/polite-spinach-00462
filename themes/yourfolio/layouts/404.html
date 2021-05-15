@@ -1,0 +1,30 @@
+{{- define "page-class" -}}error404{{- end -}}
+{{- define "head-includes" -}}
+  {{- partialCached "head-includes.html" . -}}
+  {{with partial "funcs/GetCSS.html" (dict "sourcePath" "scss/404.scss" "enableSourceMap" false)}}
+  <style>
+    {{.Content | safeCSS}}
+  </style>
+  {{end}}
+{{- end -}}
+{{- define "main" -}}
+  <div class="main-container">
+    {{- partial "navigation" . -}}
+    <div class="header">
+      <div class="container">
+        <div class="padder">
+          <div class="main-description animated fadeIn">
+            <div class="text-col">
+              <h1 class="break-word">Oops! Nothing found.</h1>
+              <p>Seems like this page doesn't exist,</p>
+              <p><span>but you can go to the</span> <a class="accent-text" href="/">Home</a> <span>page.</span></p>
+            </div>
+            <div class="img-col">
+              <picture><img src="img/error404.png" alt="The maneken hand image"></picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{- end -}}

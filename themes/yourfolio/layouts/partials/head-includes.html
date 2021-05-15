@@ -1,0 +1,14 @@
+{{with partial "funcs/GetCSS.html" (dict "sourcePath" "scss/critical.scss" "enableSourceMap" false)}}
+<style>
+  {{.Content | safeCSS}}
+</style>
+{{end}}
+{{with partial "funcs/GetCSS.html" (dict "sourcePath" "scss/app.scss" "outputPath" "css/app.css")}}
+<noscript id="deferredCss">
+  <link rel="stylesheet" href="{{.RelPermalink}}">
+</noscript>
+{{end}}
+<script>
+  document.createElement("picture");
+</script>
+<script src="https://cdn.jsdelivr.net/picturefill/3.0.2/picturefill.min.js" async></script>
